@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Private Coins
+{% endblock %}
+
+{% block img %}
+        <img src="/static/private.jpeg">
+        <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 26%; top: 22%; width: 7.5%; height: 11.5%;"></div>
+        <div class="creature" id="XRP" style="border-radius: 50%; position: absolute; left: 64.5%; top: 63%; width: 35.5%; height: 36%; --animation-order: 1;"></div>
+        <div class="creature" id="BNB" style="border-radius: 50%; position: absolute; left: 25%; top: 70%; width: 9%; height: 16%; transform: rotate(40deg); --animation-order: 2;"></div>
+        <div class="creature" id="KCS" style="border-radius: 50%; position: absolute; left: 45.5%; top: 73.5%; width: 10%; height: 19%; transform: rotate(45deg); --animation-order: 3;"></div>
+        <div class="creature" id="FTT" style="border-radius: 50%; position: absolute; left: 60.5%; top: 54.5%; width: 5.5%; height: 8%; --animation-order: 4;"></div>
+        <div class="creature" id="HT" style="border-radius: 50%; position: absolute; left: 93%; top: 28.5%; width: 5.5%; height: 15%; transform: rotate(135deg); --animation-order: 5;"></div>
+{% endblock %}
+
+{% block txt %}
+    <script>
+        let array = ["On your left, we have the <strong>private coins</strong>. These little guys enjoy being huddled up inside their shells &mdash; each consisting of a closed-source blockchain &mdash; which means they're well-protected from outside attacks. Smart!",
+        "They love to stay centralised and safe. But, because they're so guarded, it's tricky to see these amazingly armoured critters in their full glory. So, they're not as popular an exhibit as the public coins. But they are great survivors!",
+        "Stake these guys if you want a well-defended chimera that can shake off any nasty hacking attacks!"];
+    </script>
+{% endblock %}

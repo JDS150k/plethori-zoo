@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Entrance
+{% endblock %}
+
+{% block img %}
+    <img src="/static/landing.jpg">
+    <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 32.5%; top: 38%; width: 9%; height: 13%;"></div>
+    <a href="etfx-platform?lp=0&le=etfx" class="glow-image" style="position: absolute; top: 67%; left: 58%; width: 6%; height: 17%; background-color: rgba(0, 128, 0, 0.486); transform: rotate(37deg);"></a>
+{% endblock %}
+
+{% block txt %}
+    <script>
+        let array = ["G'day mates! My name's Eve Stirwin. Can ya see what's behind me here? It's our <strong>Zoo of Crypto Creatures</strong>. <em>Exciting!</em> And today you're gonna get a <em>special</em> tour!",
+        "Come and have a look at the <em>amazing</em> critters, but &ndash; please! &ndash; keep your hands away from the bars at all times. Our Shiba Inus haven't been fed this morning, and their bellies are rumbling.",
+        "Now, did ya know there's only <em>one</em> food in the <em>whole</em> world that <em>all</em> crypto creatures like?","<strong>Stakes</strong>! You've got some in your welcome packs, so toss them out whenever ya see a crypto creature you like!",
+        "Each time you stake a creature, a share of it is added to your ETF. That's <em><strong>E</strong>xchange-<strong>T</strong>raded <strong>F</strong>und</em>. Think of it like a chimera - combined from all the creatures you stake.",
+        "What are you waiting for? Go and stake some creatures, then visit the ETFX to see your chimera!"];
+    </script>
+{% endblock %}

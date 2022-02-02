@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Public Coins
+{% endblock %}
+
+{% block img %}
+        <img src="/static/public.jpeg">
+        <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 48%; top: 41%; width: 7.5%; height: 11.5%"></div>
+        <div class="creature" id="BTC" style="border-radius: 50%; position: absolute; left: 77%; top: 16%; width: 15%; height: 30%; transform: rotate(-30deg) ;--animation-order: 1;"></div>
+{% endblock %}
+
+{% block txt %}
+<script>
+    let array = ["Crikey! Look at that crowd! I told ya the <strong>public coins</strong> were popular! Everyone's always flocks here to see the glass octopus. This feller's name is Bitcoin, and he's the oldest exhibit we have here at the Crypto Zoo.",
+    "He's a superb example of a public coin &ndash; totally transparent with his open-source body, and decentralised with all his limbs spread out. Did you know, the glass octopus has its brain spread out across its whole body? Fascinating!",
+    "But let's not forget the other public coins who are just as great as old bitcoin here. In time, maybe they will be the Zoo's main attraction. Exciting!"];
+</script>
+
+{% endblock %}

@@ -1,0 +1,449 @@
+body {
+    color: #FFFFFF;
+    font-family:"Corbel",sans-serif;
+    /* font-family: Museo Sans; */
+    background: #000522;
+    text-align: center;
+}
+
+#frame {
+    position: relative;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+#mainbox {
+    position: absolute;
+    left: 20.75%;
+    top: 7.25%;
+    max-width: 58.5%;
+    max-height: 85.5%;
+}
+
+#mainbox img {
+    width: 100%;
+    height: 100%;
+}
+
+.leftcell {
+    position: absolute;
+    left: 1%;
+    width: 14%;
+    direction: rtl;
+}
+
+.rightcell {
+    position: absolute;
+    left: 85%;
+    width: 14%;
+}
+
+.topcell {
+    position: absolute;
+    height: 27%;
+    top: 3%;
+}
+
+.midcell {
+    position: absolute;
+    height: 27%;
+    top: 36.5%;
+}
+
+.botcell {
+    position: absolute;
+    height: 27%;
+    top: 70%;
+}
+
+.steak {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 50%;
+    height: 80%;
+    
+    background-image: url(steak0.png);
+    background-size: 100% 100%;
+}
+
+#steakx {
+    background-image: url(steakx.png);
+}
+  
+
+
+#switchleft {
+    position: absolute;
+    top: 50%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    width: 5%;
+    height: 10%;
+    background-image: url(left-arrow.png);
+    background-size: 100% 100%;
+}
+
+#switchleft p {
+    position: absolute;
+    font-weight: bold;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    
+}
+
+#switchright {
+    position: absolute;
+    top: 50%;
+    left: 82%;
+    transform: translate(-50%, -50%);
+    width: 5%;
+    height: 10%;
+    background-image: url(right-arrow.png);
+    background-size: 100% 100%;
+}
+
+#switchright p {
+    position: absolute;
+    font-weight: bold;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+
+}
+
+#minimap, #minimapbox {
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    width: 7.51%;
+    height: 10.8%;
+    border-radius: 50%;
+}
+
+#minimap {
+    background-image: url(map-bare.png);
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+#minimapbox {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+#minihelp {
+    background-image: url(minihelp.png);
+    border-radius: 50%;
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    width: 3.75%;
+    height: 5.4%;
+    cursor: pointer;
+}
+
+.draggable {
+    cursor: pointer;
+  }
+
+.sender {
+    position: absolute;
+    border-radius: 1em;
+    text-align: left;
+	padding: 0.25em 0.75em;
+	align-self: flex-start;
+	background-color: cornflowerblue;
+	color: #fff;
+    
+}
+
+.sender.first { border-bottom-left-radius: 0.1em; }
+.sender.last { border-top-left-radius: 0.1em; }
+
+#chat {
+    visibility: hidden;
+}
+
+@media (max-width: 667px) {
+    .header {
+        font-size: 15px;
+    }
+    #displayer, #helpbox, #mapbox, .cell {
+        font-size: 7.2px;
+    }
+    .smlheader, body{
+        font-size: 9px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 999px) {
+    .header {
+        font-size: 3vw;
+    }
+    #displayer, #helpbox, #mapbox, .cell {
+        font-size: 1.6vw;
+    }
+    .smlheader, body{
+        font-size: 2vw;
+    }
+}
+
+@media (min-width: 1000px) {
+    .header {
+        font-size: 34px;
+    }
+    #displayer, #helpbox, #mapbox, .cell {
+    font-size: 16.8px;
+    }
+    .smlheader, body{
+        font-size: 21px;
+    }
+}
+
+.cell {
+    overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: blue; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
+
+#speech {
+    position: absolute;
+    left: 2%;
+    top: 3%;
+    width: 96%;
+}
+
+#helpbox, #mapbox {
+    visibility: hidden;
+}
+
+#helpbox div, #mapbox div {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-color: rgba(1, 0, 37, 0.877);
+    overflow: auto;
+    box-shadow: 0px 0px 3vw rgba(44, 167, 227);
+    border: 0.9vw solid rgb(1, 0, 37, 0.877);
+}
+
+#helpbox .closer, #mapbox .closer {
+    position: absolute;
+    z-index: 9999;
+    top: 7%;
+    right: 8%;
+    width: 5%;
+    height: auto;
+    cursor: pointer;
+}
+
+#map {
+    position: relative;
+}
+
+#map a, #displayer {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 2px 5px;
+}
+
+#displayer {
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+    visibility: hidden;
+}
+
+.creature, #zookeeper, #prev, #next {
+
+    cursor: pointer;
+}
+
+.creature {
+    z-index: 100;
+    background-image: rgba(0, 0, 255, 0);
+}
+
+.heart {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: radial-gradient(rgba(238, 255, 0, 0), rgba(0, 0, 255, 0.719), rgba(255, 255, 0, 0), rgba(255, 255, 0, 0));
+    animation:
+        beat normal 2s infinite calc(var(--animation-order) * 300ms) ease-in-out,
+        glow normal 2s infinite calc((var(--animation-order) * 300ms) + 100ms) ease-in-out; /* Opera and prob css3 final iteration */
+}
+
+@-webkit-keyframes beat {
+    0% {
+        background-size: 20% 20%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+/* IE */
+@-ms-keyframes beat {
+    0% {
+        background-size: 20% 20%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes beat {
+    0% {
+        background-size: 20% 20%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+} 
+ 
+.glow-image {
+    -moz-animation: glow normal 3s infinite ease-in-out; /* Firefox */
+    -webkit-animation: glow normal 3s infinite ease-in-out; /* Webkit */
+    -ms-animation: glow normal 3s infinite ease-in-out; /* IE */
+    animation: glow normal 3s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
+ 
+@-moz-keyframes glow {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+} 
+ 
+@-webkit-keyframes glow {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* IE */
+@-ms-keyframes glow {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes glow {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}  
+
+.blink-txt {
+    animation: blinker 1s linear infinite;
+  }
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.blink-image {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
+
+
+@-webkit-keyframes blink {
+    0% {
+        background-size: 100% 100%;
+    }
+    50% {
+        background-size: 50% 50%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+/* IE */
+@-ms-keyframes blink {
+    0% {
+        background-size: 100% 100%;
+    }
+    50% {
+        background-size: 50% 50%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+/* Opera and prob css3 final iteration */
+@keyframes blink {
+    0% {
+        background-size: 100% 100%;
+    }
+    50% {
+        background-size: 50% 50%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
+
+#alertbub {
+    background-image: url(alert-bubble.png);
+}
+
+#closebub {
+    background-image: url(close-bubble.png);
+}
+
+#alertbub, #closebub {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top: 15%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+}
+
