@@ -62,9 +62,9 @@ apiKey = "XXXX---API-KEY-REMOVED-FOR-SECURITY---XXXX" #removed for security. Con
 def index():
     return render_template("entrance.html", apiKey=apiKey)
 
-@app.route("/private-coins")
+@app.route("/payment-coins")
 def private():
-    return render_template("private-coins.html", apiKey=apiKey)
+    return render_template("payment-coins.html", apiKey=apiKey)
 
 @app.route("/public-coins")
 def public():
