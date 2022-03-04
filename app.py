@@ -53,8 +53,9 @@ content = [
 
 cur.executemany("INSERT INTO phrase_table (symb, small, medium, large) VALUES (?, ?, ?, ?)", content)
 con.commit() 
-for row in cur.execute("SELECT * FROM phrase_table"):
-    print(row) # prints out all the rows in the phrase_table
+
+# for row in cur.execute("SELECT * FROM phrase_table"):
+    # print(row) # prints out all the rows in the phrase_table
 
 apiKey = "XXXX---API-KEY-REMOVED-FOR-SECURITY---XXXX" #removed for security. Contact owner for their API key or get your own from cryptocompare
 
@@ -62,21 +63,25 @@ apiKey = "XXXX---API-KEY-REMOVED-FOR-SECURITY---XXXX" #removed for security. Con
 def index():
     return render_template("entrance.html", apiKey=apiKey)
 
-@app.route("/payment-coins")
+@app.route("/shell-beach")
 def private():
-    return render_template("payment-coins.html", apiKey=apiKey)
+    return render_template("shell-beach.html", apiKey=apiKey)
 
-@app.route("/public-coins")
+@app.route("/decentraquarium")
 def public():
-    return render_template("public-coins.html", apiKey=apiKey)
+    return render_template("decentraquarium.html", apiKey=apiKey)
 
-@app.route("/extinct-coins")
+@app.route("/fossil-museum")
 def extinct():
-    return render_template("extinct-coins.html", apiKey=apiKey)
+    return render_template("fossil-museum.html", apiKey=apiKey)
 
-@app.route("/governance-tokens")
+@app.route("/the-hive")
 def governance():
-    return render_template("governance-tokens.html", apiKey=apiKey)
+    return render_template("the-hive.html", apiKey=apiKey)
+
+@app.route("/induction")
+def induction():
+    return render_template("induction.html", apiKey=apiKey)
 
 @app.route("/etfx-platform")
 def etfx_platform():
@@ -94,22 +99,22 @@ def etfx_platform():
     else:
         return render_template("etfx-platform.html", apiKey=apiKey)
 
-@app.route("/privacy-coins")
+@app.route("/dark-zone")
 def privacy():
-    return render_template("privacy-coins.html", apiKey=apiKey)
+    return render_template("dark-zone.html", apiKey=apiKey)
 
-@app.route("/security-tokens")
+@app.route("/the-arboretum")
 def security():
-    return render_template("security-tokens.html", apiKey=apiKey)
+    return render_template("the-arboretum.html", apiKey=apiKey)
 
-@app.route("/stable-coins")
+@app.route("/safari-zone")
 def stable():
-    return render_template("stable-coins.html", apiKey=apiKey)
+    return render_template("safari-zone.html", apiKey=apiKey)
 
-@app.route("/sustainable-coins")
+@app.route("/crypto-reef")
 def sustainable():
-    return render_template("sustainable-coins.html", apiKey=apiKey)
+    return render_template("crypto-reef.html", apiKey=apiKey)
 
-@app.route("/utility-tokens")
+@app.route("/work-yards")
 def utility():
-    return render_template("utility-tokens.html", apiKey=apiKey)
+    return render_template("work-yards.html", apiKey=apiKey)

@@ -69,11 +69,35 @@ p {
     background-size: 100% 100%;
 }
 
+
+
 #steakx {
     background-image: url(steakx.png);
 }
   
+.highlight {
+    background-color: #c300ff;
+}
 
+.trumptext {
+    position: absolute;
+    color: black;
+    bottom: 7%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -0%);
+    font-size: 1.7vw;
+}
+
+.trumptitle {
+    position: absolute;
+    width: 90%;
+    color: black;
+    top: 3.9%;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    font-size: 1.1vw;
+}
 
 #switchleft {
     position: absolute;
@@ -128,6 +152,52 @@ p {
     background-image: url(map-bare.png);
     background-size: 100% 100%;
     cursor: pointer;
+    z-index: 101;
+}
+
+.oddbeat {
+    cursor: pointer;
+    position: absolute;
+    --animation-order: 2;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: radial-gradient(rgba(238, 255, 0, 0), var(--beatcolor), rgba(255, 255, 0, 0), rgba(255, 255, 0, 0));
+    animation:
+        beat normal 1s infinite calc(var(--animation-order) * 300ms) ease-in-out,
+        glow normal 1s infinite calc((var(--animation-order) * 300ms) + 100ms) ease-in-out; /* Opera and prob css3 final iteration */
+        z-index: 9999999;
+}
+
+.redbeat {
+    --beatcolor: red;
+}
+
+#mapbeat {
+    bottom: -3.5%;
+    left: -3.5%;
+    width: 16.51%;
+    height: 19.8%;
+}
+
+#helpbeat {
+    bottom: -3.5%;
+    right: -3.5%;
+    width: 12.75%;
+    height: 14.4%;
+}
+
+#etfxbeat {
+    left: 31%;
+    top: 34%;
+    width: 20%;
+    height: 20%;
+}
+
+#keeperbeat {
+    left: 1%;
+    top: 62%;
+    width: 11%;
+    height: 17.7%;
 }
 
 #minimapbox {
@@ -144,7 +214,11 @@ p {
     width: 3.75%;
     height: 5.4%;
     cursor: pointer;
+    --animation-order: 2;
+    z-index: 101;
 }
+
+
 
 .draggable {
     cursor: pointer;
@@ -168,7 +242,7 @@ p {
     visibility: hidden;
 }
 
-@media (max-width: 667px) {
+@media (max-width: 500px) {
     .header {
         font-size: 15px;
     }
@@ -180,7 +254,7 @@ p {
     }
 }
 
-@media (min-width: 500px) and (max-width: 999px) {
+@media (min-width: 501px) and (max-width: 1049px) {
     .header {
         font-size: 3vw;
     }
@@ -192,12 +266,12 @@ p {
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1050px) {
     .header {
         font-size: 34px;
     }
     #displayer, #helpbox, #mapbox, .cell {
-    font-size: 16.8px;
+    font-size: 16.6px;
     }
     .smlheader, body{
         font-size: 21px;
@@ -206,6 +280,9 @@ p {
 
 .cell {
     overflow: auto;
+    --animation-order: 2;
+    --beatcolor: red;
+
 }
 
 /* width */
@@ -235,6 +312,7 @@ p {
     left: 2%;
     top: 3%;
     width: 96%;
+    z-index: 101
 }
 
 #helpbox, #mapbox {
@@ -286,7 +364,6 @@ p {
 }
 
 .creature, #zookeeper, #prev, #next {
-
     cursor: pointer;
 }
 
@@ -343,16 +420,16 @@ p {
         opacity: 1;
     }
     50% {
-        opacity: 1;
+        opacity: 0.2;
     }
 } 
- 
+
 @-webkit-keyframes glow {
     0% {
         opacity: 1;
     }
     100% {
-        opacity: 0;
+        opacity: 0.2;
     }
 }
 /* IE */
@@ -361,7 +438,7 @@ p {
         opacity: 1;
     }
     100% {
-        opacity: 0;
+        opacity: 0.2;
     }
 } 
 /* Opera and prob css3 final iteration */
@@ -370,7 +447,7 @@ p {
         opacity: 1;
     }
     100% {
-        opacity: 0;
+        opacity: 0.2;
     }
 }  
 
@@ -440,8 +517,8 @@ p {
     position: absolute;
     width: 50%;
     height: 50%;
-    left: 50%;
-    top: 15%;
+    left: 70%;
+    top: -20%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: 0% 100%;

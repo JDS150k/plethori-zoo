@@ -7,10 +7,9 @@
 {% block img %}
     <img src="/static/etfx-platform-plethori-zoo.png" class="img-fluid w-100">
     <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 90%; top: 32%; width: 7.5%; height: 11.5%;"></div>
-    <div id="machine" style="position: absolute; left: 50%; top: 50%; width: 50%; height: 50%; background-color: rgba(19, 0, 192, 0.575); transform: translate(-50%, -50%)"></div>
-
-
-
+    <div id="chimera-button" class="oddbeat" style="position: absolute; left: 34.5%; bottom: 8.5%; width: 10%; height: 11%; --beatcolor: rgb(229, 255, 0);"></div>
+    <div id="chimera-card" style="visibility: hidden; position: absolute; left: 50%; top: 50%; width: 50%; height: 99%; transform: translate(-50%, -50%); background-image: url(/static/chimera.png); background-size: 100% 100%;"></div>
+    
 {% endblock %}
 
 
@@ -22,6 +21,7 @@
         "That chimera would be an ETF. The combination of many assets into one! ETFs allow you to adopt a share of many animals with just one purchase, rather than many separate purchases.",
         "That means one transaction fee, but many creatures to spread the risk of your investment! <em>Smart!</em>",
         "When you've finished staking creatures, then you can visit the ETFX below to meet your creation!"];
+        etfxpage = true;
     </script>
 {% endblock %}
     

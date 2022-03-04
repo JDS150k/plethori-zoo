@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dark Zone - Privacy Coins
+{% endblock %}
+
+{% block img %}
+        <img src="/static/privacy.jpeg">
+        <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 26%; top: 22%; width: 7.5%; height: 11.5%;"></div>
+        <div class="creature" id="XMR" style="border-radius: 50%; position: absolute; right: 0%; top: 63%; width: 17%; height: 36%; --animation-order: 1;"></div>
+        <div class="creature" id="ZEC" style="border-radius: 50%; position: absolute; left: 9%; top: 36%; width: 9%; height: 30%; transform: rotate(30deg); --animation-order: 2;"></div>
+        <div class="creature" id="DASH" style="border-radius: 50%; position: absolute; left: 23%; top: 47%;  width: 10%; height: 9%; --animation-order: 3;"></div>
+        <div class="creature" id="ZEN" style="border-radius: 50%; position: absolute; left: 52.5%; top: 43%; width: 8%; height: 10%; --animation-order: 4;"></div>
+        <div class="creature" id="XVG" style="border-radius: 50%; position: absolute; left: 69%; top: 62%; width: 10%; height: 15%; --animation-order: 5;"></div>
+        <div class="creature" id="BEAM" style="border-radius: 50%; position: absolute; left: 71.7%; top: 32%; width: 12%; height: 8%; --animation-order: 5;"></div>
+{% endblock %}
+
+{% block txt %}
+    <script>
+        let array = ["Down here, we have the <strong>privacy coins</strong>. These guys all represent an cryptocurrency whose main purpose is payment. Did you know the first ancient forms of money were shells?",
+        "Dating back to 1200BCE, nomadic people used shells as coins. So we project the payment coins here as shelled creatures, to represent their purpose of payment.",
+        "These are the payment coins most accepted by the big online merchants today. So stake these guys if you want a chimera that's in symbiosis with the big merchants!"];
+    </script>
+{% endblock %}

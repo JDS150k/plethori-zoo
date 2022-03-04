@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    DecentrAquarium - Decentralised Coins
+{% endblock %}
+
+{% block img %}
+        <img src="/static/public.jpeg">
+        <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 48%; top: 41%; width: 7.5%; height: 11.5%"></div>
+        <div class="creature" id="ADA" style="border-radius: 50%; position: absolute; left: 77%; top: 16%; width: 15%; height: 30%; transform: rotate(-30deg) ;--animation-order: 1;"></div>
+        <div class="creature" id="HOT" style="border-radius: 50%; position: absolute; left: 8%; top: 17.5%; width: 11%; height: 19%; transform: rotate(60deg) ;--animation-order: 2;"></div>
+        <div class="creature" id="QKC" style="border-radius: 50%; position: absolute; left: 15%; top: -2%; width: 6%; height: 20%; transform: rotate(70deg) ;--animation-order: 1;"></div>
+        <div class="creature" id="ZIL" style="border-radius: 50%; position: absolute; left: 33%; top: 28%; width: 7%; height: 15%; transform: rotate(30deg) ;--animation-order: 2;"></div>
+        <div class="creature" id="ELA" style="border-radius: 50%; position: absolute; left: 38%; top: 1%; width: 15%; height: 30%;--animation-order: 3;"></div>
+        <div class="creature" id="XNO" style="border-radius: 50%; position: absolute; left: 64%; top: 17%; width: 10%; height: 10%;--animation-order: 1;"></div>
+        <div class="creature" id="DCR" style="border-radius: 50%; position: absolute; left: 94%; top: 23%; width: 6%; height: 6%;--animation-order: 2;"></div>
+{% endblock %}
+
+{% block txt %}
+<script>
+    let array = ["Crikey! Look at that crowd! I told ya the <strong>public coins</strong> were popular! Everyone's always flocks here to see the glass octopus. This feller's name is Bitcoin, and he's the oldest exhibit we have here at the Crypto Zoo.",
+    "He's a superb example of a public coin &ndash; totally transparent with his open-source body, and decentralised with all his limbs spread out. Did you know, the glass octopus has its brain spread out across its whole body? Fascinating!",
+    "But let's not forget the other public coins who are just as great as old bitcoin here. In time, maybe they will be the Zoo's main attraction. Exciting!"];
+</script>
+
+{% endblock %}

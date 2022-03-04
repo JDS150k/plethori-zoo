@@ -16,7 +16,7 @@
     </head>
     <body>
         <div id="frame">
-            <img src="/static/frame.jpg" class="img-fluid">
+            <img src="/static/frame.png" class="img-fluid">
             <!-- REMOVED LATERAL BUTTONS FOR NOW - WILL REPURPOSE TO CYCLE THROUGH ENCLOSURES
             <a id="switchleft" href="..."></a>
             <a id="switchright" href="..."></a>
@@ -59,8 +59,11 @@
                 </div>
 
                 <div id="minimapbox"></div>
+                
                 <a id="minimap" onclick="openMap()"></a>
+                
                 <a id="minihelp" onclick="openHelp()"></a>
+                
                 <div id="helpbox">
                     <div class="p-3" style="direction: rtl;">
                         <span class="header">Plethori Zoo Guidebook</span>
@@ -76,15 +79,15 @@
                     <div id="map">
                         <img src="/static/map.png" class="img-fluid">    
                         <a href="etfx-platform" title="ETFX Platform" style="position: absolute; left: 49%; top: 52%">ETFX</a>
-                        <a href="sustainable-coins" title="Sustainable Coins" style="position: absolute; left: 14.3%; top: 44.5%">Sustainable Coins</a>
-                        <a href="public-coins" title="Public Coins" style="position: absolute; left: 43%; top: 82%">Public Coins</a>
-                        <a href="governance-tokens" title="Governance Tokens" style="position: absolute; left: 8%; top: 63.5%">Governance Tokens</a>
-                        <a href="extinct-coins" title="Extinct Coins" style="position: absolute; left: 31.5%; top: 32%">Extinct Coins</a>
-                        <a href="payment-coins.html" title="Payment Coins" style="position: absolute; left: 73.5%; top: 65%">Payment Coins</a>
-                        <a href="privacy-coins" title="Privacy Coins" style="position: absolute; left: 64%; top: 33.5%">Privacy Coins</a>
-                        <a href="utility-tokens" title="Utility Tokens" style="position: absolute; left: 74%; top: 47%">Utility Tokens</a>
-                        <a href="stable-coins" title="Stable Coins" style="position: absolute; left: 67%; top: 78.5%">Stable Coins</a>
-                        <a href="security-tokens" title="Security Tokens" style="position: absolute; left: 13%; top: 81%">Security Tokens</a>
+                        <a href="crypto-reef" title="Sustainable Coins" style="position: absolute; left: 14.3%; top: 44.5%">Crypto Reef</a>
+                        <a href="decentraquarium" title="Decentralised Coins" style="position: absolute; left: 43%; top: 82%">DecentrAquarium</a>
+                        <a href="the-hive" title="Governance Tokens" style="position: absolute; left: 8%; top: 63.5%">The Hive</a>
+                        <a href="fossil-museum" title="Extinct Coins" style="position: absolute; left: 31.5%; top: 32%">Fossil Museum</a>
+                        <a href="shell-beach" title="Payment Coins" style="position: absolute; left: 73.5%; top: 65%">Shell Beach</a>
+                        <a href="dark-zone" title="Privacy Coins" style="position: absolute; left: 64%; top: 33.5%">Dark Zone</a>
+                        <a href="work-yards" title="Utility Tokens" style="position: absolute; left: 74%; top: 47%">Work Yards</a>
+                        <a href="safari-zone" title="Stable Coins" style="position: absolute; left: 67%; top: 78.5%">Safari Zone</a>
+                        <a href="the-arboretum" title="Security Tokens" style="position: absolute; left: 13%; top: 81%">The Arboretum</a>
                     </div>
                     <img src="/static/close-button.png" onclick="closeMap()" class="closer">
                 </div>
@@ -92,9 +95,14 @@
             </div>
         </div>
 
+        <script> 
+            let etfxpage = false;
+            let induction = false;
+        </script>
+
         {% block txt %}{% endblock %} <!--block-txt contains an array of zookeeper dialogue-->
         
-        <script> // helpbox and mapbox functionality
+        <script> // helpbox and mapbox functionality           
             var helpbox = document.getElementById("helpbox");
             var mapbox = document.getElementById("mapbox");
             var boxcounter = 99999;
@@ -129,7 +137,7 @@
                 creature.addEventListener("mouseout", hideStats);
                 creature.addEventListener("mouseover", showStats);
                 let heart = document.createElement("div");
-                heart.style.cssText = document.defaultView.getComputedStyle(creature, "").cssText;
+                //heart.style.cssText = document.defaultView.getComputedStyle(creature, "").cssText;
                 heart.setAttribute("style", creature.getAttribute("style"))
                 heart.classList.add("heart");
                 heart.style.zIndex = 98;
@@ -167,12 +175,22 @@
         </script>
 
         <script> // dynamically render the zookeeper's speech from the array in 'block txt' 
+            let mapbeat = document.createElement("div");
+            mapbeat.classList.add("redbeat");
+            let helpbeat = document.createElement("div");
+            helpbeat.classList.add("redbeat");
+            let etfxbeat = document.createElement("div");
+            etfxbeat.classList.add("redbeat");
+            let keeperbeat = document.createElement("div");
+            keeperbeat.classList.add("redbeat");
             var txtcounter = -1;
             let next1 = document.getElementById("next");
             let prev1 = document.getElementById("prev");
             let dialogue = document.getElementById("dialogue");
             next1.addEventListener("click", NextText);
             prev1.addEventListener("click", PrevText);
+            var cellsArrayRaw = document.getElementsByClassName("cell");
+            var cellsArray = Array.from(cellsArrayRaw);
             function NextText() {
                 txtcounter +=1;
                 renderText(txtcounter);
@@ -193,6 +211,48 @@
                 } else {
                     next1.innerHTML = "";
                 }
+                //below we check for which step of the induction the user is at, and animate sections of the page accordingly
+                if (induction == true) {
+                    if (txtcounter == 3) {
+                        for (let cell in cellsArray) {
+                            cellsArray[cell].classList.add("oddbeat");
+                        }
+                    } else {
+                        for (let cell in cellsArray) {
+                            cellsArray[cell].classList.remove("oddbeat");
+                        }
+                    }
+                    mainbox.appendChild(etfxbeat);
+                    if (txtcounter == 4) {
+                        etfxbeat.setAttribute("id", "etfxbeat");
+                        etfxbeat.classList.add("oddbeat");
+                    } else {
+                        etfxbeat.remove();
+                    }
+                    mainbox.appendChild(keeperbeat);
+                    if (txtcounter == 6) {
+                        keeperbeat.setAttribute("id", "keeperbeat");
+                        keeperbeat.classList.add("oddbeat");
+                    } else {
+                        keeperbeat.remove();
+                    }
+                    mainbox.appendChild(mapbeat);
+                    if (txtcounter == 5 || txtcounter == 8) {
+                        mapbeat.setAttribute("id", "mapbeat");
+                        mapbeat.setAttribute("onclick", "openMap()");
+                        mapbeat.classList.add("oddbeat");
+                    } else {
+                        mapbeat.remove();
+                    }
+                    mainbox.appendChild(helpbeat);
+                    if (txtcounter == 1 || txtcounter == 7) {
+                        helpbeat.setAttribute("id", "helpbeat");
+                        helpbeat.setAttribute("onclick", "openHelp()");
+                        helpbeat.classList.add("oddbeat");
+                    } else {
+                        helpbeat.remove();
+                    }
+                }
             }
             NextText();
             // dynamically generate zookeeper bubbles
@@ -205,7 +265,6 @@
             closeBub.setAttribute("id", "closebub");
             var chat = document.getElementById("chat");
             alertBub.classList.add("blink-image");
-            //closeBub.classList.add("blink-image");
             keeper.appendChild(alertBub); // start with the alert bubble 
             // listen for clicks on bubbles, and show/hide chat (and change bubbles) accordingly
             keeper.addEventListener("click", function() {
@@ -224,14 +283,20 @@
                     NextText();
                 }
             });
+            // render speech box in different location for induction page
+            if (induction == true) {
+                let speech = document.getElementById("speech");
+                speech.style.left = "11%";
+                speech.style.top = "67%";
+                speech.style.width = "79.5%";
+                speech.classList.remove("first");
+                speech.classList.add("last");
+            }
         </script>
 
         
         <script>
             // STAKING FUNCTIONALITY FOR USER TO SELECT THEIR CHOICES AND MAKE A CHIMERA
-            var cellsArrayRaw = document.getElementsByClassName("cell");
-            var cellsArray = Array.from(cellsArrayRaw);
-            var renderedBlueprint = false;
             var userChoicesDisplay = {
                 "steak1cell": {"symbol": "???", "iPow": 0, "sPow": 0, "growth": 0, "mob": 0, "pop": 0},
                 "steak2cell": {"symbol": "???", "iPow": 0, "sPow": 0, "growth": 0, "mob": 0, "pop": 0},
@@ -481,9 +546,6 @@
                             "Pop: " + pop + "<br>" + 
                             "<img src='static/close-button.png' style='width: 10%; height: auto' onclick='clearCell(this)'>";
                             // REFRESH PAGE IF THERE'S A CHIMERA BLUEPRINT ALREADY BEING RENDERED ONSCREEN
-                            if (renderedBlueprint == true) {
-                                location.reload();
-                            }
                         });
                     } else {
                         //POPULATE CELL WITH A STAKE/STEAK
@@ -499,20 +561,26 @@
             function clearCell(thing) {
                 sessionStorage.removeItem(thing.parentElement.id);
                 updateCells();
+                if (etfxpage == true) {
+                    location.reload();
+                }
             };
             
             updateCells();
 
             //ADD LISTENER TO CHIMERA MACHINE
-            if (document.getElementById("machine")) {
-                var machine = document.getElementById("machine");
-                machine.addEventListener("click", renderBlueprint);
+            if (document.getElementById("chimera-button")) {
+                var chimeraButton = document.getElementById("chimera-button");
+                var chimeraCard = document.getElementById("chimera-card");
+                chimeraButton.addEventListener("click", renderBlueprint);
+                chimeraCard.classList.add("toptrump");
             }
             var bluePrint = {};
 
             // CALCULATE CHIMERA STATS
             function renderBlueprint() {
-                renderedBlueprint = true;
+                chimeraButton.classList.remove("oddbeat");
+                chimeraCard.style.visibility = "visible";
                 var sPowerChim = 0;
                 var iPowerChim = 0;
                 var growthChim = 0;
@@ -537,17 +605,17 @@
                 growthChim = parseFloat((growthChim / 6).toFixed(1));
                 mobChim = parseFloat((mobChim / 6).toFixed(1));
                 popChim = parseFloat((popChim / 6).toFixed(1));
-                // FILL MACHINE DIV WITH CONTENTS OF CHIMERA STATS
-                machine.innerHTML = "Your Chimera Blueprint is:<br>" + JSON.stringify(bluePrint) + "<br>" +
+                // FILL CHIM-CARD DIV WITH CONTENTS OF CHIMERA STATS
+                chimeraCard.innerHTML = "<div class='trumptitle'>" + JSON.stringify(bluePrint) + "</div><div class='trumptext'>" + 
                 "Individual Power: $" + iPowerChim + "<br>" +
                 "Mobility: $" + mobChim.toLocaleString() + "<br>" + 
                 "Species Power: $" + sPowerChim.toLocaleString() + "<br>" + 
                 "Growth Rate: " + growthChim + "%<br>" + 
-                "Population: " + popChim.toLocaleString() + "<br>" +
-                "<button onclick='meetChimera()'>Meet Your Chimera</>";
-            };
+                "Population: " + popChim.toLocaleString() + "</div>";
+                //"<button onclick='meetChimera()'>Meet Your Chimera</>"; ----- redacted button to show the chimera's textual description
+            }
 
-            // WHEN USER CLICKS 'MEET CHIMERA' THE PAGE WILL REFRESH WITH THE BLUEPRINT IN THE URL
+            /* WHEN USER CLICKS 'MEET CHIMERA' THE PAGE WILL REFRESH WITH THE BLUEPRINT IN THE URL
             function meetChimera() {
                 let bp = JSON.stringify(bluePrint);
                 window.open('?bp=' + bp,'_self');
@@ -563,6 +631,8 @@
                 }
             }
             printDescription();
+            */
+            
         </script>
     </body>
 </html>

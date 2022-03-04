@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Governance Tokens
+{% endblock %}
+
+{% block img %}
+    <div id="enclosure">
+        <img src="/static/governance-tokens-plethori-zoo.jpg" class="img-fluid w-100">
+        <div id="zookeeper" style="border-radius: 50%; position: absolute; left: 72%; top: 13%; width: 20%; height: 30%"></div>
+        <div class="creature" id="UNI" style="border-radius: 50%; position: absolute; left: 5%; top: 80%; width: 10%; height: 15%; --animation-order: 1;"></div>
+        <div class="creature" id="CAKE" style="border-radius: 50%; position: absolute; left: 20%; top: 80%; width: 10%; height: 15%; --animation-order: 2;"></div>
+        <div class="creature" id="AAVE" style="border-radius: 50%; position: absolute; left: 35%; top: 80%; width: 10%; height: 15%; --animation-order: 3;"></div>
+        <div class="creature" id="MKR" style="border-radius: 50%; position: absolute; left: 50%; top: 80%; width: 10%; height: 15%; --animation-order: 4;"></div>
+        <div class="creature" id="AMP" style="border-radius: 50%; position: absolute; left: 65%; top: 80%; width: 10%; height: 15%; --animation-order: 5;"></div>
+        <div class="creature" id="CRV" style="border-radius: 50%; position: absolute; left: 80%; top: 80%; width: 10%; height: 15%; --animation-order: 5;"></div>
+    </div>
+{% endblock %}
+
+{% block txt %}
+    <script>
+        let array = ["<strong>Governance tokens</strong>! It's amazing what big complex structures these teenie-weenie guys can make. Their secret? Teamwork!",
+        "Each and every one of these tokens represents a vote in the governance of their habitat. By adopting one, the owner can directly influence the direction of the project's user interface, distributions, fees, etc. What power!",
+        "Stake these guys if you want your chimera to harness the power of the collective!"];
+    </script>
+{% endblock %}
