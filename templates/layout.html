@@ -13,6 +13,11 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <title>Plethori's Zoo of Crypto Creatures - {% block title %}{% endblock %}</title>
+        <meta property="og:url"           content="https://www.plethori.com" />
+        <meta property="og:type"          content="image" />
+        <meta property="og:title"         content="My Crypto Chimera" />
+        <meta property="og:description"   content="Check out the Crypto Chimera I created at Plethori's Zoo of Crypto Creatures." />
+        <!-- javascript will create and append the meta for og:image here-->
     </head>
     <body>
         <div id="frame">
@@ -99,6 +104,8 @@
             let etfxpage = false;
             let induction = false;
         </script>
+
+        <script src="/static/html2canvas.min.js"></script>
 
         {% block txt %}{% endblock %} <!--block-txt contains an array of zookeeper dialogue-->
         
@@ -572,15 +579,45 @@
             if (document.getElementById("chimera-button")) {
                 var chimeraButton = document.getElementById("chimera-button");
                 var chimeraCard = document.getElementById("chimera-card");
+                var blurScreen = document.getElementById("blur");
+                //var adopter = document.getElementById("adopt");
+                var sharer = document.getElementById("share");
                 chimeraButton.addEventListener("click", renderBlueprint);
-                chimeraCard.classList.add("toptrump");
+                sharer.addEventListener("click", shareChimera);
+                var seeShareImage = document.getElementById("see-share-image");
+                //adopter.addEventListener("click", adoptChimera);
+
             }
             var bluePrint = {};
+
+            function shareChimera () {
+                html2canvas(chimeraCard).then(canvas => {
+                    //document.body.appendChild(canvas);
+                    var shareImage = document.createElement("meta");
+                    shareImage.setAttribute("property", "og:image");
+                    shareImage.content = '/static/decoder.php?data=' + canvas.toDataURL().slice(22);
+                    document.head.appendChild(shareImage)
+                    seeShareImage.href = shareImage.content
+                    // ADD STANDARD SOCIAL SHARE BUTTONS HERE TO SHARE CURRENT URL - THEY SHOULD FIND THE og:image META TAG POINTING TO SHAREIMAGE
+                });
+            }
+
+            /*
+            function adoptChimera () {
+                alert("TODO: adopt function");
+                // ADD STANDARD EMAIL SIGNUP DIV HERE
+                // ADD FEATURE TO SEND US USER'S CHIMERA-DICT ALONG WITH THEIR EMAIL ADDRESS
+            }
+            */
 
             // CALCULATE CHIMERA STATS
             function renderBlueprint() {
                 chimeraButton.classList.remove("oddbeat");
+                blurScreen.style.visibility = "visible";
                 chimeraCard.style.visibility = "visible";
+                document.getElementById("minimap").style.visibility = "hidden";
+                document.getElementById("minimapbox").style.visibility = "hidden";
+                document.getElementById("minihelp").style.visibility = "hidden";
                 var sPowerChim = 0;
                 var iPowerChim = 0;
                 var growthChim = 0;
@@ -613,6 +650,9 @@
                 "Growth Rate: " + growthChim + "%<br>" + 
                 "Population: " + popChim.toLocaleString() + "</div>";
                 //"<button onclick='meetChimera()'>Meet Your Chimera</>"; ----- redacted button to show the chimera's textual description
+                //
+                // ALSO PUT BLUEPRINT STRING INTO THE 'ADOPT CHIMERA' FORM, READY TO BE SENT TO APP.PY WITH USER'S EMAIL
+                document.getElementById("adoptFormBlueprint").value = JSON.stringify(bluePrint);
             }
 
             /* WHEN USER CLICKS 'MEET CHIMERA' THE PAGE WILL REFRESH WITH THE BLUEPRINT IN THE URL

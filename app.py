@@ -34,6 +34,7 @@ con = sqlite3.connect('zoodatabase.db', check_same_thread=False)
 cur = con.cursor() 
 
 cur.execute('''DROP TABLE IF EXISTS phrase_table''')
+cur.execute('''DROP TABLE IF EXISTS adopters''')
 
 cur.execute('''CREATE TABLE IF NOT EXISTS phrase_table
          (SYMB          TEXT     NOT NULL,
@@ -42,7 +43,13 @@ cur.execute('''CREATE TABLE IF NOT EXISTS phrase_table
          LARGE          TEXT     NOT NULL
          );''')
 
-content = [
+cur.execute('''CREATE TABLE IF NOT EXISTS adopters
+         (EMAIL         TEXT     NOT NULL,
+         CHIMERA        TEXT     NOT NULL,
+         BLUEPRINT      TEXT     NOT NULL
+         );''')
+
+phraseContent = [
         ("BTC", "a small phrase for BTC", "a medium phrase for BTC which is longer", "a large phrase for BTC which is even longer still"),
         ("BNB", "a small phrase for BNB", "a medium phrase for BNB which is longer", "a large phrase for BNB which is even longer still"),
         ("KCS", "a small phrase for KCS", "a medium phrase for KCS which is longer", "a large phrase for KCS which is even longer still"),
@@ -50,12 +57,17 @@ content = [
         ("XRP", "a small phrase for XRP", "a medium phrase for XRP which is longer", "a large phrase for XRP which is even longer still"),
         ("HT", "a small phrase for HT", "a medium phrase for HT which is longer", "a large phrase for HT which is even longer still")
     ]
-
-cur.executemany("INSERT INTO phrase_table (symb, small, medium, large) VALUES (?, ?, ?, ?)", content)
+adopterContent = [
+        ("jds150k@gmail.com", "Frosty", "{'DASH':3,'XMR':2,'BCH':1}"),
+        ("smaph.mentors@gmail.com", "Beast", "{'BTC':3,'SOL':2,'BCH':1}"),
+        ("josh@plethori.com", "MonsterBoy", "{'ADA':3,'XMR':2,'BTC':1}")
+    ]
+cur.executemany("INSERT INTO phrase_table (symb, small, medium, large) VALUES (?, ?, ?, ?)", phraseContent)
+cur.executemany("INSERT INTO adopters (email, chimera, blueprint) VALUES (?, ?, ?)", adopterContent)
 con.commit() 
 
-# for row in cur.execute("SELECT * FROM phrase_table"):
-    # print(row) # prints out all the rows in the phrase_table
+for row in cur.execute("SELECT * FROM adopters"):
+    print(row) # prints out all the rows in the table
 
 apiKey = "XXXX---API-KEY-REMOVED-FOR-SECURITY---XXXX" #removed for security. Contact owner for their API key or get your own from cryptocompare
 
@@ -83,21 +95,35 @@ def governance():
 def induction():
     return render_template("induction.html", apiKey=apiKey)
 
-@app.route("/etfx-platform")
+@app.route("/etfx-platform", methods=["GET", "POST"])
 def etfx_platform():
-    if request.args.get("bp"):
-        bpString = request.args.get("bp")
-        bpDict = json.loads(bpString)
-        description = []
-        sizes = ["SMALL", "MEDIUM", "LARGE"]
-        print("...second print...")
-        for key in bpDict:
-            cur.execute('SELECT [%s] FROM phrase_table WHERE SYMB = ?' % (sizes[math.floor(bpDict[key] / 2)],), (key,))
-            phrase = cur.fetchall()
-            description.append(phrase)
-        return render_template("etfx-platform.html", description=description, apiKey=apiKey)
+    if request.method == "GET":
+        if request.args.get("bp"):
+            bpString = request.args.get("bp")
+            bpDict = json.loads(bpString)
+            description = []
+            sizes = ["SMALL", "MEDIUM", "LARGE"]
+            print("...second print...")
+            for key in bpDict:
+                cur.execute('SELECT [%s] FROM phrase_table WHERE SYMB = ?' % (sizes[math.floor(bpDict[key] / 2)],), (key,))
+                phrase = cur.fetchall()
+                description.append(phrase)
+            return render_template("etfx-platform.html", description=description, apiKey=apiKey)
+        else:
+            return render_template("etfx-platform.html", apiKey=apiKey)
     else:
-        return render_template("etfx-platform.html", apiKey=apiKey)
+        email = request.form.get("email")
+        chimeraName = request.form.get("chimera-name")
+        blueprint = request.form.get("blueprint")
+        cur.execute("INSERT INTO adopters (email, chimera, blueprint) VALUES (?, ?, ?)", (email, chimeraName, blueprint))
+        con.commit
+        # return redirect("/")
+        # ADD A 'THANKS/SUCCESS' PAGE AND REDIRECT USER TO IT AFTER ADOPTING THEIR CHIMERA!
+        # THE PAGE SHOULD HAVE THE OPTION TO THEN SHARE THEIR CHIMERA TO SOCIAL, OR 'START AGAIN/MAKE ANOTHER'
+
+
+
+    
 
 @app.route("/dark-zone")
 def privacy():

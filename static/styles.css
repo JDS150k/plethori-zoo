@@ -99,6 +99,23 @@ p {
     font-size: 1.1vw;
 }
 
+#adopt {
+    left: 8%;
+    background-color: #00b33c91;
+}
+
+#share {
+    right: 8%;
+    background-color: #b3000091;
+}
+
+.chimbutton {
+    position: fixed;
+    top: 37.5%;
+    width: 25%;
+    height: 25%;
+}
+
 #switchleft {
     position: absolute;
     top: 50%;
@@ -523,4 +540,3 @@ p {
     background-repeat: no-repeat;
     background-position: 0% 100%;
 }
-
