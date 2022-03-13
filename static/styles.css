@@ -100,20 +100,27 @@ p {
 }
 
 #adopt {
-    left: 8%;
+    left: 3%;
     background-color: #00b33c91;
 }
 
 #share {
-    right: 8%;
+    right: 3%;
     background-color: #b3000091;
 }
 
-.chimbutton {
+#share img {
+    width: 20%;
+    height: auto;
+}
+
+.chimaction {
+    visibility: hidden;
     position: fixed;
-    top: 37.5%;
-    width: 25%;
-    height: 25%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30%;
+    height: 60%;
 }
 
 #switchleft {
@@ -260,7 +267,7 @@ p {
 }
 
 @media (max-width: 500px) {
-    .header {
+    .header, h1 {
         font-size: 15px;
     }
     #displayer, #helpbox, #mapbox, .cell {
@@ -272,7 +279,7 @@ p {
 }
 
 @media (min-width: 501px) and (max-width: 1049px) {
-    .header {
+    .header, h1 {
         font-size: 3vw;
     }
     #displayer, #helpbox, #mapbox, .cell {
@@ -284,7 +291,7 @@ p {
 }
 
 @media (min-width: 1050px) {
-    .header {
+    .header, h1 {
         font-size: 34px;
     }
     #displayer, #helpbox, #mapbox, .cell {

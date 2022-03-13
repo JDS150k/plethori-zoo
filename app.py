@@ -117,7 +117,9 @@ def etfx_platform():
         blueprint = request.form.get("blueprint")
         cur.execute("INSERT INTO adopters (email, chimera, blueprint) VALUES (?, ?, ?)", (email, chimeraName, blueprint))
         con.commit
-        # return redirect("/")
+        for row in cur.execute("SELECT * FROM adopters"):
+            print(row) # prints out all the rows in the table
+        return redirect("/etfx-platform")
         # ADD A 'THANKS/SUCCESS' PAGE AND REDIRECT USER TO IT AFTER ADOPTING THEIR CHIMERA!
         # THE PAGE SHOULD HAVE THE OPTION TO THEN SHARE THEIR CHIMERA TO SOCIAL, OR 'START AGAIN/MAKE ANOTHER'
 
